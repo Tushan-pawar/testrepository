@@ -10,53 +10,34 @@
 
 
 
-
-
-// Define the Account class with fields for account number, holder name, and balance
-
-
 class Account {
     private String accountNumber;
     private String accountHolderName;
     private double balance;
 
-    // Constructor to initialize account details
 
-    
-    public Account(String accountNumber, String accountHolderName, double balance) {
+   public Account(String accountNumber, String accountHolderName, double balance) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
         this.balance = balance;
     }
-
-    // Method to deposit money into the account
-
-    
-    public void deposit(double amount) {
-        balance += amount;
+   public void deposit(double amount) {
+        balance = balance+amount;
     }
 
-    // Method to withdraw money from the account
-
-    
+ 
     public void withdraw(double amount) {
         if (amount <= balance) {
-            balance -= amount;
+            balance =balance-amount;
         } else {
             System.out.println("Insufficient balance.");
         }
     }
 
-    // Method to get the current balance of the account
-
-    
     public double getBalance() {
         return balance;
     }
 }
-
-// Define the Transaction class with fields for transaction ID, source and destination accounts, and amount
-
 
 class Transaction {
     private int transactionId;
@@ -64,9 +45,7 @@ class Transaction {
     private Account destinationAccount;
     private double amount;
 
-    // Constructor to initialize transaction details
 
-    
     public Transaction(int transactionId, Account sourceAccount, Account destinationAccount, double amount) {
         this.transactionId = transactionId;
         this.sourceAccount = sourceAccount;
@@ -74,47 +53,34 @@ class Transaction {
         this.amount = amount;
     }
 
-    // Method to execute the transaction by transferring money from source to destination account
 
-    
-    public void executeTransaction() {
+    public void runTransaction() {
         if (sourceAccount.getBalance() >= amount) {
             sourceAccount.withdraw(amount);
             destinationAccount.deposit(amount);
-            System.out.println("Transaction successful.");
         } else {
             System.out.println("Transaction failed due to insufficient balance.");
         }
     }
 }
 
-// Main class to demonstrate the functionality of Account and Transaction classes
-
-
 public class Main {
     public static void main(String[] args) {
-        // Create two accounts
-        Account account1 = new Account("123456789", "John Doe", 1000.0);
-        Account account2 = new Account("987654321", "Jane Smith", 500.0);
+        Account account1 = new Account("234", "Mahesh", 932);
+        Account account2 = new Account("654", "Suresh", 777);
 
-        // Deposit initial amounts
-        
         account1.deposit(500.0);
         account2.deposit(200.0);
-
-        // Display balances
         
-        System.out.println("Account 1 balance: " + account1.getBalance());
-        System.out.println("Account 2 balance: " + account2.getBalance());
+        System.out.println("Balance of first account is : " + account1.getBalance());
+        System.out.println("Balance of second account is: " + account2.getBalance());
 
-        // Create a transaction and execute transfer
         
-        Transaction transaction = new Transaction(1, account1, account2, 300.0);
-        transaction.executeTransaction();
+        Transaction transaction = new Transaction(1, account1, account2, 370.0);
+        transaction.runTransaction();
 
-        // Display updated balances after the transaction
-        
-        System.out.println("Updated Account 1 balance: " + account1.getBalance());
-        System.out.println("Updated Account 2 balance: " + account2.getBalance());
+        System.out.println("First account new Balance is: " + account1.getBalance());
+        System.out.println("Second account new Balance is: " + account2.getBalance());
     }
+
 }
