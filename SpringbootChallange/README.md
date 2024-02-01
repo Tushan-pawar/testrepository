@@ -1,1 +1,6 @@
 # SocietyManagement
+1. Account Class: Create a class called `Account` that represents a bank account. It should have the following attributes: - `accountNumber` (String) - `accountHolderName` (String) - `balance` (double) Include a constructor to initialize these attributes and methods for: - `deposit(double amount)`: Add the specified amount to the balance. - `withdraw(double amount)`: Deduct the specified amount from the balance. - `getBalance()`: Return the current balance. 
+
+2. Transaction Class: Create a class called `Transaction` to represent a transaction. It should have the following attributes: - `transactionId` (int) - `sourceAccount` (Account) - `destinationAccount` (Account) - `amount` (double) Include a constructor to initialize these attributes and a method for performing the transaction: - `executeTransaction()`: Transfer the specified amount from the source account to the destination account. Update the balances of both accounts.
+
+ 3. Main Program: Write a simple program that demonstrates functionality. Create two `Account` objects and perform the following operations: - Deposit some initial amount into each account. - Display the balances. - Create a `Transaction` object and execute a transfer between the two accounts. - Display the updated balances after the transaction.
