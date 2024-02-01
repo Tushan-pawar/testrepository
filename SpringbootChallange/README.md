@@ -13,12 +13,16 @@
 
 
 // Define the Account class with fields for account number, holder name, and balance
+
+
 class Account {
     private String accountNumber;
     private String accountHolderName;
     private double balance;
 
     // Constructor to initialize account details
+
+    
     public Account(String accountNumber, String accountHolderName, double balance) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
@@ -26,11 +30,15 @@ class Account {
     }
 
     // Method to deposit money into the account
+
+    
     public void deposit(double amount) {
         balance += amount;
     }
 
     // Method to withdraw money from the account
+
+    
     public void withdraw(double amount) {
         if (amount <= balance) {
             balance -= amount;
@@ -40,12 +48,16 @@ class Account {
     }
 
     // Method to get the current balance of the account
+
+    
     public double getBalance() {
         return balance;
     }
 }
 
 // Define the Transaction class with fields for transaction ID, source and destination accounts, and amount
+
+
 class Transaction {
     private int transactionId;
     private Account sourceAccount;
@@ -53,6 +65,8 @@ class Transaction {
     private double amount;
 
     // Constructor to initialize transaction details
+
+    
     public Transaction(int transactionId, Account sourceAccount, Account destinationAccount, double amount) {
         this.transactionId = transactionId;
         this.sourceAccount = sourceAccount;
@@ -61,6 +75,8 @@ class Transaction {
     }
 
     // Method to execute the transaction by transferring money from source to destination account
+
+    
     public void executeTransaction() {
         if (sourceAccount.getBalance() >= amount) {
             sourceAccount.withdraw(amount);
@@ -73,6 +89,8 @@ class Transaction {
 }
 
 // Main class to demonstrate the functionality of Account and Transaction classes
+
+
 public class Main {
     public static void main(String[] args) {
         // Create two accounts
@@ -80,18 +98,22 @@ public class Main {
         Account account2 = new Account("987654321", "Jane Smith", 500.0);
 
         // Deposit initial amounts
+        
         account1.deposit(500.0);
         account2.deposit(200.0);
 
         // Display balances
+        
         System.out.println("Account 1 balance: " + account1.getBalance());
         System.out.println("Account 2 balance: " + account2.getBalance());
 
         // Create a transaction and execute transfer
+        
         Transaction transaction = new Transaction(1, account1, account2, 300.0);
         transaction.executeTransaction();
 
         // Display updated balances after the transaction
+        
         System.out.println("Updated Account 1 balance: " + account1.getBalance());
         System.out.println("Updated Account 2 balance: " + account2.getBalance());
     }
